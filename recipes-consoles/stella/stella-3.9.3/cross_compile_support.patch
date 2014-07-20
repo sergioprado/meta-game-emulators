@@ -1,0 +1,37 @@
+diff --git a/Makefile b/Makefile
+index 67b1a10..620072c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -172,7 +172,7 @@ config.mak: $(srcdir)/configure
+ 
+ install: all
+ 	$(INSTALL) -d "$(DESTDIR)$(BINDIR)"
+-	$(INSTALL) -c -s -m 755 "$(srcdir)/stella$(EXEEXT)" "$(DESTDIR)$(BINDIR)/stella$(EXEEXT)"
++	$(INSTALL) -c -m 755 "$(srcdir)/stella$(EXEEXT)" "$(DESTDIR)$(BINDIR)/stella$(EXEEXT)"
+ 	$(INSTALL) -d "$(DESTDIR)$(DOCDIR)"
+ 	$(INSTALL) -c -m 644 "$(srcdir)/Announce.txt" "$(srcdir)/Changes.txt" "$(srcdir)/Copyright.txt" "$(srcdir)/License.txt" "$(srcdir)/README-SDL.txt" "$(srcdir)/Readme.txt" "$(srcdir)/Todo.txt" "$(srcdir)/docs/index.html" "$(srcdir)/docs/debugger.html" "$(DESTDIR)$(DOCDIR)/"
+ 	$(INSTALL) -d "$(DESTDIR)$(DOCDIR)/graphics"
+diff --git a/configure b/configure
+index 419eb8a..9cab197 100755
+--- a/configure
++++ b/configure
+@@ -334,6 +334,7 @@ mingw32-cross)
+ 	_host_cpu=`echo $guessed_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\1/'`
+ 	_host_os=`echo $guessed_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\3/'`
+ 	_host_vendor=`echo $guessed_host | sed 's/^\([^-]*\)-\([^-]*\)-\(.*\)$/\2/'`
++    _host_prefix=$_host
+ 	;;
+ esac
+ 
+@@ -528,6 +529,11 @@ if test -n "$_host"; then
+ 			DEFINES="$DEFINES -DWIN32"
+ 			_host_os=win32
+ 			;;
++        *poky-linux*)
++            echo "Cross-compiling for Poky based systems."
++            DEFINES="$DEFINES -DUNIX"
++            _host_os=unix
++            ;;
+ 		*)
+ 			echo "Cross-compiling to unknown target, please add your target to configure."
+ 			exit 1
