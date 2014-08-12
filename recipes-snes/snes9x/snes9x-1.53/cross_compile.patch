@@ -1,0 +1,38 @@
+--- a/unix/configure.ac	2011-04-24 10:38:10.000000000 -0300
++++ b/unix/configure.ac	2014-08-11 21:06:04.148481167 -0300
+@@ -4,7 +4,7 @@
+ 
+ AC_CONFIG_SRCDIR([unix.cpp])
+ 
+-AC_CANONICAL_TARGET
++AC_CANONICAL_HOST
+ 
+ AC_PROG_CC
+ AC_PROG_CXX
+@@ -38,7 +38,7 @@
+ 				return (argc);
+ 			}
+ 		],
+-		[snes9x_cv_option_$2="yes"], [snes9x_cv_option_$2="no"])
++		[snes9x_cv_option_$2="yes"], [snes9x_cv_option_$2="no"], [snes9x_cv_option_$2="yes"])
+ 	])
+ 
+ 	CXXFLAGS="[$]OLD_CXXFLAGS"
+@@ -112,7 +112,7 @@
+ 
+ AC_CACHE_VAL([snes9x_cv_linux_os],
+ [
+-	case "$target" in
++	case "$host" in
+ 		*-*-linux*)
+ 			snes9x_cv_linux_os="yes"
+ 			;;
+@@ -350,7 +350,7 @@
+ 			return (i < 0 ? 0 : 1);
+ 		}
+ 	],
+-	[snes9x_sar_$1="yes"], [snes9x_sar_$1="no"])
++	[snes9x_sar_$1="yes"], [snes9x_sar_$1="no"], [snes9x_sar_$1=$GCC])
+ 
+ 	CXXFLAGS="[$]OLD_CXXFLAGS"
+ 
