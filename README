@@ -1,8 +1,9 @@
-OpenEmbedded/Yocto BSP layer for video game system emulators
+OpenEmbedded/Yocto software layer for video game system emulators
 ============================================================
 
 This layer provides video game system emulators recipes for 
 use with OpenEmbedded and/or Yocto.
+
 
 Dependencies
 ============
@@ -12,6 +13,7 @@ This layer depends on:
   URI: git://git.openembedded.org/openembedded-core
   layers: meta
   branch: master
+
 
 Patches
 =======
