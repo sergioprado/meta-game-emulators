@@ -1,0 +1,10 @@
+This is a list of tasks if you want to colaborate:
+
+- Create a new recipe named stella_ha to compile Stella 4.0+ where hardware
+acelleration is a required feature.
+
+- Create a recipe to compile new emulators. A good list of emulators is
+available here:
+https://github.com/herrwiese/gentoo-portage/tree/master/games-emulation
+
+Please let me know if you are working on any of these tasks.
