@@ -15,7 +15,9 @@ SRC_URI[sha256sum] = "9f7c5d2d0fa3fe753611cf94e8879b73b8bb3c0eab97cdbcb6ab7376ef
 
 S = "${WORKDIR}/snes9x-${PV}-src/unix"
 
-inherit autotools
+inherit autotools-brokensep
+
+DEPENDS = "libice libx11 zlib libpng libxext libsm"
 
 do_install() {
     install -d ${D}${bindir}
