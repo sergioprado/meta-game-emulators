@@ -1,0 +1,23 @@
+diff --git a/test/acinclude.m4 b/test/acinclude.m4
+index b6df43f080fe..385ab95cc996 100644
+--- a/test/acinclude.m4
++++ b/test/acinclude.m4
+@@ -35,15 +35,15 @@ AC_ARG_ENABLE(sdltest, [  --disable-sdltest       Do not try to compile and run
+   if test "x$prefix" != xNONE; then
+     PATH="$prefix/bin:$prefix/usr/bin:$PATH"
+   fi
+-  AC_PATH_PROG(SDL_CONFIG, sdl-config, no, [$PATH])
++  AC_PATH_PROG(SDL_CONFIG, sdl-config, "", [$PATH])
+   min_sdl_version=ifelse([$1], ,0.11.0,$1)
+   AC_MSG_CHECKING(for SDL - version >= $min_sdl_version)
+   no_sdl=""
+   if test "$SDL_CONFIG" = "no" ; then
+     no_sdl=yes
+   else
+-    SDL_CFLAGS=`$SDL_CONFIG $sdlconf_args --cflags`
+-    SDL_LIBS=`$SDL_CONFIG $sdlconf_args --libs`
++    SDL_CFLAGS=`pkg-config --cflags sdl`
++    SDL_LIBS=`pkg-config --libs sdl`
+ 
+     sdl_major_version=`$SDL_CONFIG $sdl_args --version | \
+            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
