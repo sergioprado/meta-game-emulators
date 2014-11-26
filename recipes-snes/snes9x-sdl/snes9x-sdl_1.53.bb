@@ -16,7 +16,7 @@ S = "${WORKDIR}/git/sdl"
 
 DEPENDS = "libsdl"
 
-inherit autotools
+inherit autotools-brokensep
 
 do_install() {
     install -d ${D}${bindir}
