@@ -1,0 +1,25 @@
+From d983127916367c4f87592b4dab1230c5bc8ba9ac Mon Sep 17 00:00:00 2001
+From: Jools Wills <jools@oxfordinspire.co.uk>
+Date: Sun, 22 Feb 2015 01:04:01 +0000
+Subject: [PATCH 5/5] should be 0 not NULL
+
+---
+ src/video/dispmanx/SDL_dispmanxvideo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/video/dispmanx/SDL_dispmanxvideo.c b/src/video/dispmanx/SDL_dispmanxvideo.c
+index cf3a6c7e6815..3d743adcc9ee 100644
+--- a/src/video/dispmanx/SDL_dispmanxvideo.c
++++ b/src/video/dispmanx/SDL_dispmanxvideo.c
+@@ -402,7 +402,7 @@ static void DISPMANX_VideoQuit(_THIS)
+ 		DISPMANX_FreeBackground();
+ 		DISPMANX_FreeResources();
+ 		vc_dispmanx_display_close( dispvars->display );
+-		dispvars->display = NULL;
++		dispvars->display = 0;
+ 	}
+ 
+ 	FB_CloseMouse(this);
+-- 
+1.9.1
+
