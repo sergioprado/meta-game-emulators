@@ -14,7 +14,7 @@ SRCREV = "59d68a2c2ed8cb7266c689e704a1d843961ac6bc"
 
 S = "${WORKDIR}/git/sdl"
 
-DEPENDS = "libsdl"
+DEPENDS = "libsdl libpng"
 
 inherit autotools-brokensep
 
