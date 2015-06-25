@@ -7,7 +7,7 @@ BUGTRACKER = "http://bugzilla.libsdl.org/"
 
 SECTION = "tests"
 
-LICENSE = "PD"
+LICENSE = "LGPL-2.1"
 LIC_FILES_CHKSUM = "file://COPYING;md5=77604414711055c1393ef261e94e5855"
 
 DEPENDS = "libsdl"
