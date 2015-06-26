@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index 9392a8deb87b..bea8cf35da91 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,7 @@
+ 
+-CXX = g++
++CXX ?= g++
+ 
+ INCLDIRS=-Iunix -Iunix/input -Iunzip -I.
+-LIBDIRS=-L/usr/lib/arm-linux-gnueabihf
+ 
+ OPTIMISE= -D_ZAURUS -O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer
+ 
