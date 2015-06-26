@@ -1,0 +1,73 @@
+diff --git a/Makefile b/Makefile
+index 82108cff9288..3175198ac179 100644
+--- a/Makefile
++++ b/Makefile
+@@ -60,24 +60,22 @@ GLIDENO_DEPENDS=use_glide
+ OPENGLDEPENDS=no_opengl
+ OPENGLNO_DEPENDS=use_opengl
+ 
+-CCC = g++
+-CC = gcc
++CXX ?= g++
++CC ?= gcc
+ NASM = nasm
+ 
+-INCLUDES=-I/usr/include -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads \
+-    -I/opt/vc/include/interface/vmcs_host/linux 
+-
+-
+ #OPTIMISE= -D_ZAURUS -O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
+ OPTIMISE= -D_ZAURUS -O3 -march=armv6 -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
+ 
+ CCFLAGS = $(OPTIMISE) \
+--I/usr/include \
+--I/usr/include/SDL \
+ -I. \
++-I=/usr/include/glib-2.0/ \
++-I=/usr/lib/glib-2.0/include/ \
++-I=/usr/include/interface/vcos/pthreads/ \
++-I=/usr/include/interface/vmcs_host/linux/ \
++-I=/usr/include/SDL/ \
+ -Iunzip \
+ -Isdl \
+--I/usr/include/glib-2.0 -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include \
+ -D__linux \
+ -DZLIB \
+ -DVAR_CYCLES \
+@@ -99,7 +97,7 @@ CFLAGS=$(CCFLAGS)
+ 
+ .SUFFIXES: .o .cpp .c .cc .h .m .i .S .asm .obj
+ 
+-LDLIBS = -L/usr/lib/arm-linux-gnueabihf -L/opt/vc/lib -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lrt -lm -lasound
++LDLIBS = -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lrt -lm -lasound
+ 
+ all: snes9x snes9x.gui
+ 
+@@ -110,22 +108,22 @@ snes9x.gui: unix/frontend.o
+ 	$(CC) $(INCLUDES) -o $@ unix/frontend.o $(EXTRALIBS) $(LDLIBS) -lSDL -lstdc++ -lz -lpthread 
+ 
+ .cpp.o:
+-	$(CCC) $(INCLUDES) -c $(CCFLAGS) $*.cpp -o $@
++	$(CXX) $(INCLUDES) -c $(CCFLAGS) $*.cpp -o $@
+ 
+ .c.o:
+ 	$(CC) $(INCLUDES) -c $(CCFLAGS) $*.c -o $@
+ 
+ .cpp.S:
+-	$(CCC) $(INCLUDES) -S $(CCFLAGS) $*.cpp -o $@
++	$(CXX) $(INCLUDES) -S $(CCFLAGS) $*.cpp -o $@
+ 
+ .cpp.i:
+-	$(CCC) $(INCLUDES) -E $(CCFLAGS) $*.cpp -o $@
++	$(CXX) $(INCLUDES) -E $(CCFLAGS) $*.cpp -o $@
+ 
+ .S.o:
+-	$(CCC) $(INCLUDES) -c $(CCFLAGS) $*.S -o $@
++	$(CXX) $(INCLUDES) -c $(CCFLAGS) $*.S -o $@
+ 
+ .S.i:
+-	$(CCC) $(INCLUDES) -c -E $(CCFLAGS) $*.S -o $@
++	$(CXX) $(INCLUDES) -c -E $(CCFLAGS) $*.S -o $@
+ 
+ .asm.o:
+ 	$(NASM) -f elf $(FXDEFINES) -i . -i i386 -o $@ $*.asm
