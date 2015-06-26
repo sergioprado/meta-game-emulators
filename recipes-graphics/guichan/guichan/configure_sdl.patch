@@ -1,0 +1,13 @@
+diff --git a/configure.in b/configure.in
+index b901d8c33b1d..71ed4e40b352 100644
+--- a/configure.in
++++ b/configure.in
+@@ -115,7 +115,7 @@ HaveSDLImage()
+ {
+   SDLIMAGE="yes"
+   SDL_LIBS="$SDL_LIBS -lSDL_image"
+-  CPPFLAGS="$CPPFLAGS `sdl-config --cflags`"
++  CPPFLAGS="$CPPFLAGS `pkg-config sdl --cflags`"
+ }
+ 
+ ForceSDLImage()

@@ -1,0 +1,81 @@
+From 1a727941539e7ed4376dc8194cb4988961c86340 Mon Sep 17 00:00:00 2001
+From: Arnaud Loonstra <arnaud@sphaero.org>
+Date: Sun, 18 Jan 2015 14:55:36 +0100
+Subject: [PATCH 1/1] fixes for causing a crash with uae4all: No focushandler
+ set (did you add the widget to the gui?). see reference:
+ http://www.raspberrypi.org/forums/viewtopic.php?p=653405#p653405
+
+---
+ src/widget.cpp             | 12 +++++++-----
+ src/widgets/tabbedarea.cpp |  4 ++++
+ 2 files changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/src/widget.cpp b/src/widget.cpp
+index 7dfc7e10d5b1..97978a7ace1e 100644
+--- a/src/widget.cpp
++++ b/src/widget.cpp
+@@ -269,7 +269,7 @@ namespace gcn
+     {
+         if (mFocusHandler == NULL)
+         {
+-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
++            throw GCN_EXCEPTION("No focushandler set (requestFocus: did you add the widget to the gui?).");
+         }
+ 
+         if (isFocusable())
+@@ -558,7 +558,7 @@ namespace gcn
+     {
+         if (mFocusHandler == NULL)
+         {
+-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
++            throw GCN_EXCEPTION("No focushandler set (requestModalFocus: did you add the widget to the gui?).");
+         }
+ 
+         mFocusHandler->requestModalFocus(this);
+@@ -568,7 +568,7 @@ namespace gcn
+     {
+         if (mFocusHandler == NULL)
+         {
+-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
++            throw GCN_EXCEPTION("No focushandler set (requestModalMouseInputFocus: did you add the widget to the gui?).");
+         }
+ 
+         mFocusHandler->requestModalMouseInputFocus(this);
+@@ -598,7 +598,8 @@ namespace gcn
+     {
+         if (mFocusHandler == NULL)
+         {
+-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
++            return false;
++            //throw GCN_EXCEPTION("No focushandler set (isModalFocused: did you add the widget to the gui?).");
+         }
+ 
+         if (getParent() != NULL)
+@@ -614,7 +615,8 @@ namespace gcn
+     {
+         if (mFocusHandler == NULL)
+         {
+-            throw GCN_EXCEPTION("No focushandler set (did you add the widget to the gui?).");
++            return false;
++            //throw GCN_EXCEPTION("No focushandler set (isModalMouseInputFocused: did you add the widget to the gui?).");
+         }
+ 
+         if (getParent() != NULL)
+diff --git a/src/widgets/tabbedarea.cpp b/src/widgets/tabbedarea.cpp
+index e07d14c4d718..5ed9d39ba41c 100644
+--- a/src/widgets/tabbedarea.cpp
++++ b/src/widgets/tabbedarea.cpp
+@@ -317,6 +317,10 @@ namespace gcn
+ 
+     void TabbedArea::logic()
+     {
++        for (unsigned int i = 0; i < mTabs.size(); i++)
++        {
++                  mTabs[i].second->logic();
++        }
+     }
+ 
+     void TabbedArea::adjustSize()
+-- 
+1.9.1
+
