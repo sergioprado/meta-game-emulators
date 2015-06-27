@@ -2,6 +2,8 @@ SUMMARY = "Multi-platform Super Nintendo emulator (SDL version)"
 HOMEPAGE = "http://www.snes9x.com/"
 SECTION = "emulators"
 
+PROVIDES += "virtual/snes9x"
+
 LICENSE = "GPLv2 & LGPLv2.1" 
 LIC_FILES_CHKSUM = "file://../docs/snes9x-license.txt;md5=2990ee23aa20730e9a67366f467e0991 \
                     file://../docs/gpl-2.0.txt;md5=751419260aa954499f7abaabaa882bbe \
