@@ -1,0 +1,11 @@
+--- advancemame-1.2/configure.ac-org	2015-06-13 16:14:39.322621823 +0000
++++ advancemame-1.2/configure.ac	2015-06-13 16:14:47.818621822 +0000
+@@ -1114,8 +1114,6 @@
+ 
+ # Final
+ AC_SUBST([CONF_LIB_DIRECT],[$ac_lib_direct_flag])
+-AC_SUBST([mandir],['${prefix}/man'])
+-AC_SUBST([docdir],['${prefix}/doc'])
+ AC_CONFIG_FILES([Makefile])
+ AC_OUTPUT
+ 
