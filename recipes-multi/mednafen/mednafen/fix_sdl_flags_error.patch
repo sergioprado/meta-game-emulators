@@ -1,0 +1,15 @@
+diff --git a/acinclude.m4 b/acinclude.m4
+index 636b3570e1fa..e2883e736b81 100644
+--- a/acinclude.m4
++++ b/acinclude.m4
+@@ -37,8 +37,8 @@ AC_ARG_WITH(sdl-exec-prefix,[  --with-sdl-exec-prefix=PFX Exec prefix where SDL
+   if test "$SDL_CONFIG" = "no" ; then
+     no_sdl=yes
+   else
+-    SDL_CFLAGS=`$SDL_CONFIG $sdlconf_args --cflags`
+-    SDL_LIBS=`$SDL_CONFIG $sdlconf_args --libs`
++    SDL_CFLAGS=`pkg-config --cflags sdl`
++    SDL_LIBS=`pkg-config --libs sdl`
+ 
+     sdl_major_version=`$SDL_CONFIG $sdl_args --version | \
+            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
