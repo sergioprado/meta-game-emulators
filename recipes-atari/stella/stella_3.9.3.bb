@@ -5,7 +5,7 @@ SECTION = "emulators"
 LICENSE = "GPLv2" 
 LIC_FILES_CHKSUM = "file://License.txt;md5=878e3965c7b52d85827c75f5a2f3b314" 
 
-SRC_URI = "http://softlayer-dal.dl.sourceforge.net/project/stella/stella/3.9.3/stella-${PV}-src.tar.gz \
+SRC_URI = "http://nbtelecom.dl.sourceforge.net/project/stella/stella/${PV}/stella-${PV}-src.tar.gz \
            file://cross_compile_support.patch"
 
 SRC_URI[md5sum] = "007d45faa46341763da31f87d55df2d8"
