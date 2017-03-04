@@ -10,6 +10,6 @@ SRC_URI_append_rpi = " \
 
 CFLAGS_append_rpi = " -I=/usr/include/interface/vcos/pthreads/ -I=/usr/include/interface/vmcs_host/linux/ "
 
-RDEPENDS_${PN}_rpi = "userland"
+DEPENDS_rpi = "userland"
 
 EXTRA_OECONF += "--enable-video-fbcon"
