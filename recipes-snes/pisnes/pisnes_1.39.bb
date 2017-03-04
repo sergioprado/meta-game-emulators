@@ -1,8 +1,8 @@
 SUMMARY = "Multi-platform Super Nintendo emulator for the Raspberry Pi (based on SNES9X 1.39)."
-HOMEPAGE = "http://sourceforge.net/projects/pisnes/" 
+HOMEPAGE = "http://sourceforge.net/projects/pisnes/"
 SECTION = "emulators"
 
-LICENSE = "GPLv2" 
+LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://copyright.h;md5=3a4f359300f60eb6bc02db9db398af0a"
 
 SRC_URI = "git://git.code.sf.net/p/pisnes/code \
@@ -21,3 +21,5 @@ do_install() {
     install -m 0755 snes9x ${D}${bindir}/pisnes
     install -m 0755 snes9x.gui ${D}${bindir}/pisnes.gui
 }
+
+COMPATIBLE_MACHINE = "rpi"
