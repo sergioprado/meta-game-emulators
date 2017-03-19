@@ -19,6 +19,8 @@ inherit autotools-brokensep
 
 DEPENDS = "libice libx11 zlib libpng libxext libsm"
 
+TARGET_CC_ARCH += "${LDFLAGS}"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 snes9x ${D}${bindir}
