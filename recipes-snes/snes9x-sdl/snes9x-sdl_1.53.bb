@@ -16,6 +16,8 @@ S = "${WORKDIR}/git/sdl"
 
 DEPENDS = "libsdl libpng"
 
+TARGET_CC_ARCH += "${LDFLAGS}"
+
 inherit autotools-brokensep
 
 do_install() {
