@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index 82108cff9288..3175198ac179 100644
+index 82108cff9288..e17be09bd2e2 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -60,24 +60,22 @@ GLIDENO_DEPENDS=use_glide
@@ -17,7 +17,8 @@ index 82108cff9288..3175198ac179 100644
 -
 -
  #OPTIMISE= -D_ZAURUS -O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
- OPTIMISE= -D_ZAURUS -O3 -march=armv6 -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
+-OPTIMISE= -D_ZAURUS -O3 -march=armv6 -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
++OPTIMISE= -D_ZAURUS -O3 -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer 
  
  CCFLAGS = $(OPTIMISE) \
 --I/usr/include \
@@ -34,16 +35,24 @@ index 82108cff9288..3175198ac179 100644
  -D__linux \
  -DZLIB \
  -DVAR_CYCLES \
-@@ -99,7 +97,7 @@ CFLAGS=$(CCFLAGS)
+@@ -85,6 +83,7 @@ CCFLAGS = $(OPTIMISE) \
+ -DSPC700_SHUTDOWN \
+ -fpermissive \
+ -Wno-write-strings \
++-Wno-narrowing \
+ $(CPUDEFINES) \
+ $(SOUNDDEFINES) \
+ $(NETPLAYDEFINES) \
+@@ -99,7 +98,7 @@ CFLAGS=$(CCFLAGS)
  
  .SUFFIXES: .o .cpp .c .cc .h .m .i .S .asm .obj
  
 -LDLIBS = -L/usr/lib/arm-linux-gnueabihf -L/opt/vc/lib -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lrt -lm -lasound
-+LDLIBS = -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lrt -lm -lasound
++LDLIBS = -lbcm_host -lvchostif -lGLESv2 -lEGL -lglib-2.0 -lrt -lm -lasound
  
  all: snes9x snes9x.gui
  
-@@ -110,22 +108,22 @@ snes9x.gui: unix/frontend.o
+@@ -110,22 +109,22 @@ snes9x.gui: unix/frontend.o
  	$(CC) $(INCLUDES) -o $@ unix/frontend.o $(EXTRALIBS) $(LDLIBS) -lSDL -lstdc++ -lz -lpthread 
  
  .cpp.o:

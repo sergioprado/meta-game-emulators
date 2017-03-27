@@ -16,6 +16,8 @@ DEPENDS = "glib-2.0 libsdl zlib virtual/egl"
 
 EXTRA_OEMAKE=""
 
+TARGET_CC_ARCH += "${LDFLAGS}"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 snes9x ${D}${bindir}/pisnes
