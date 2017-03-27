@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index bc6bd0c41a80..3814762e88fd 100644
+index bc6bd0c41a80..10db99b2cb57 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -16,35 +16,28 @@ EXE =
+@@ -16,35 +16,29 @@ EXE =
  VPATH=src $(wildcard src/cpu/*)
  
  # compiler, linker and utilities
@@ -40,16 +40,18 @@ index bc6bd0c41a80..3814762e88fd 100644
 +	-O3 -ffast-math -fomit-frame-pointer -fstrict-aliasing -fexpensive-optimizations \
  	-fweb -frename-registers -falign-functions=16 -falign-loops -falign-labels -falign-jumps \
  	-finline -finline-functions -fno-common -fno-builtin -fsingle-precision-constant \
- 	-Wall -Wno-sign-compare -Wunused -Wpointer-arith -Wcast-align -Waggregate-return -Wshadow 
+-	-Wall -Wno-sign-compare -Wunused -Wpointer-arith -Wcast-align -Waggregate-return -Wshadow 
++	-Wall -Wno-sign-compare -Wunused -Wpointer-arith -Wcast-align -Waggregate-return \
++	-Wno-narrowing -Wshadow
  
 -LDFLAGS = $(CFLAGS)
 -
 -LIBS = -lm -lpthread -lSDL -L$(SDKSTAGE)/opt/vc/lib -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lasound -lrt
-+LIBS = -lSDL -lbcm_host -lGLESv2 -lEGL -lglib-2.0 -lasound -lrt -lpthread -lm
++LIBS = -lSDL -lbcm_host -lvchostif -lGLESv2 -lEGL -lglib-2.0 -lasound -lrt -lpthread -lm
  
  OBJ = obj_$(TARGET)_$(MAMEOS)
  OBJDIRS = $(OBJ) $(OBJ)/cpu $(OBJ)/sound $(OBJ)/$(MAMEOS) \
-@@ -64,8 +57,7 @@ include src/$(MAMEOS)/$(MAMEOS).mak
+@@ -64,8 +58,7 @@ include src/$(MAMEOS)/$(MAMEOS).mak
  CDEFS = $(DEFS) $(COREDEFS) $(CPUDEFS) $(SOUNDDEFS)
  
  $(EMULATOR): $(COREOBJS) $(OSOBJS) $(DRVOBJS)
@@ -59,7 +61,7 @@ index bc6bd0c41a80..3814762e88fd 100644
  
  $(OBJ)/%.o: src/%.c
  	@echo Compiling $<...
-@@ -73,15 +65,15 @@ $(OBJ)/%.o: src/%.c
+@@ -73,15 +66,15 @@ $(OBJ)/%.o: src/%.c
  
  $(OBJ)/%.o: src/%.cpp
  	@echo Compiling $<...
