@@ -16,6 +16,8 @@ DEPENDS = "boost libsdl libsdl-ttf zlib"
 
 EXTRA_OEMAKE=""
 
+TARGET_CC_ARCH += "${LDFLAGS}"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 snes9x ${D}${bindir}/snes9x-rpi

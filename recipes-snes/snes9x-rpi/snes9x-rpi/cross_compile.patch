@@ -1,8 +1,8 @@
 diff --git a/Makefile b/Makefile
-index 9392a8deb87b..bea8cf35da91 100644
+index 9392a8deb87b..7f58d7fb0ca1 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -1,8 +1,7 @@
+@@ -1,10 +1,9 @@
  
 -CXX = g++
 +CXX ?= g++
@@ -10,5 +10,16 @@ index 9392a8deb87b..bea8cf35da91 100644
  INCLDIRS=-Iunix -Iunix/input -Iunzip -I.
 -LIBDIRS=-L/usr/lib/arm-linux-gnueabihf
  
- OPTIMISE= -D_ZAURUS -O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer
+-OPTIMISE= -D_ZAURUS -O3 -march=armv6zk -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer
++OPTIMISE= -D_ZAURUS -O3 -mfpu=vfp -mfloat-abi=hard -ffast-math -fstrict-aliasing -fomit-frame-pointer
  
+ UNZIPDEFINES=-DUNZIP_SUPPORT
+ SOUNDDEFINES=-DSPC700_C
+@@ -15,6 +14,7 @@ CXXFLAGS = $(OPTIMISE) \
+ -DVAR_CYCLES \
+ -DCPU_SHUTDOWN \
+ -DSPC700_SHUTDOWN \
++-Wno-narrowing \
+ $(SOUNDDEFINES) \
+ $(UNZIPDEFINES) \
+ -DNO_INLINE_SET_GET
