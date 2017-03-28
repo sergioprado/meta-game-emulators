@@ -15,4 +15,6 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "libsdl libsdl-gfx"
 
+EXTRA_OECONF += "--enable-force-sdl"
+
 inherit autotools pkgconfig
