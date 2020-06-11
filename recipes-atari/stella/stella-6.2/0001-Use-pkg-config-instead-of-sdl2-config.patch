@@ -1,0 +1,44 @@
+From 87de289ed734c4a14c9b1e02fa2fa7febc000b76 Mon Sep 17 00:00:00 2001
+From: Sergio Prado <sergio.prado@e-labworks.com>
+Date: Thu, 11 Jun 2020 18:18:28 +0000
+Subject: [PATCH] Use pkg-config instead of sdl2-config
+
+Signed-off-by: Sergio Prado <sergio.prado@e-labworks.com>
+---
+ configure | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 4fb2cf08d154..ba12c9eae90d 100755
+--- a/configure
++++ b/configure
+@@ -802,7 +802,7 @@ fi
+ # Now, add the appropriate defines/libraries/headers
+ #
+ echo
+-find_sdlconfig
++#find_sdlconfig
+ 
+ SRC="src"
+ CORE="$SRC/emucore"
+@@ -821,7 +821,7 @@ SQLITE="$SRC/common/repository/sqlite"
+ 
+ INCLUDES="-I$CORE -I$COMMON -I$TV -I$TIA -I$TIA_FRAME_MANAGER"
+ 
+-INCLUDES="$INCLUDES `$_sdlconfig --cflags`"
++INCLUDES="$INCLUDES `pkg-config --cflags sdl2`"
+ if test "$_build_static" = yes ; then
+ 	_sdl_conf_libs="--static-libs"
+ 	LDFLAGS="-static $LDFLAGS"
+@@ -829,7 +829,7 @@ else
+ 	_sdl_conf_libs="--libs"
+ fi
+ 
+-LIBS="$LIBS `$_sdlconfig $_sdl_conf_libs`"
++LIBS="$LIBS `pkg-config $_sdl_conf_libs sdl2`"
+ LD=$CXX
+ 
+ case $_host_os in
+-- 
+2.17.1
+
