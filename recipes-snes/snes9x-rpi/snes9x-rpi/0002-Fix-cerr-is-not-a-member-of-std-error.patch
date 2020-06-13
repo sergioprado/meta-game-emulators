@@ -1,0 +1,26 @@
+From d71a9214531b5dea34f300d60c1ee5105d110a0d Mon Sep 17 00:00:00 2001
+From: Sergio Prado <sergio.prado@e-labworks.com>
+Date: Sat, 13 Jun 2020 09:25:44 +0000
+Subject: [PATCH] Fix cerr is not a member of std error
+
+Signed-off-by: Sergio Prado <sergio.prado@e-labworks.com>
+---
+ unix/unix.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/unix/unix.cpp b/unix/unix.cpp
+index e76b8867bd73..a3e691e83775 100644
+--- a/unix/unix.cpp
++++ b/unix/unix.cpp
+@@ -75,6 +75,8 @@
+ #include "soundSystem.hpp"
+ #include "inputController.hpp"
+ 
++#include <iostream>
++
+ SoundSystem *sndSys(NULL);
+ InputController *inputController(NULL);
+ 
+-- 
+2.17.1
+

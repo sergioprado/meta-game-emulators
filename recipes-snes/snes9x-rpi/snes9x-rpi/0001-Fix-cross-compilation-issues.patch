@@ -1,5 +1,15 @@
+From 274c1af48ed93c29aeb878ec9208562cae167f5b Mon Sep 17 00:00:00 2001
+From: Sergio Prado <sergio.prado@e-labworks.com>
+Date: Sat, 13 Jun 2020 09:23:25 +0000
+Subject: [PATCH] Fix cross compilation issues
+
+Signed-off-by: Sergio Prado <sergio.prado@e-labworks.com>
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/Makefile b/Makefile
-index 9392a8deb87b..7f58d7fb0ca1 100644
+index 9235d9740ae2..f0c21544785b 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,10 +1,9 @@
@@ -15,11 +25,14 @@ index 9392a8deb87b..7f58d7fb0ca1 100644
  
  UNZIPDEFINES=-DUNZIP_SUPPORT
  SOUNDDEFINES=-DSPC700_C
-@@ -15,6 +14,7 @@ CXXFLAGS = $(OPTIMISE) \
+@@ -14,6 +13,7 @@ CXXFLAGS = $(OPTIMISE) \
+ -DZLIB \
  -DVAR_CYCLES \
  -DCPU_SHUTDOWN \
- -DSPC700_SHUTDOWN \
 +-Wno-narrowing \
+ -DSPC700_SHUTDOWN \
  $(SOUNDDEFINES) \
  $(UNZIPDEFINES) \
- -DNO_INLINE_SET_GET
+-- 
+2.17.1
+
