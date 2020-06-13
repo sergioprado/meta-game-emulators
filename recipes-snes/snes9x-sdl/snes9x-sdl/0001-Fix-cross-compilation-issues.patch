@@ -1,5 +1,15 @@
+From 7221bee66050a8fd1a806d6f154823b93e8a428c Mon Sep 17 00:00:00 2001
+From: Sergio Prado <sergio.prado@e-labworks.com>
+Date: Sat, 13 Jun 2020 10:03:41 +0000
+Subject: [PATCH] Fix cross compilation issues
+
+Signed-off-by: Sergio Prado <sergio.prado@e-labworks.com>
+---
+ sdl/configure.ac | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
 diff --git a/sdl/configure.ac b/sdl/configure.ac
-index 670ea05b279a..62e395400c23 100644
+index 670ea05b279a..45f2655f525a 100644
 --- a/sdl/configure.ac
 +++ b/sdl/configure.ac
 @@ -4,7 +4,7 @@ AC_REVISION([$Revision: 1.53 $])
@@ -26,7 +36,7 @@ index 670ea05b279a..62e395400c23 100644
  if test "x$snes9x_cv_sdl" = "xyes"; then
 -  	S9XFLGS="$S9XFLGS `sdl-config --cflags`"
 -	S9XLIBS="$S9XLIBS `sdl-config --libs`"
-+  	S9XFLGS="$S9XFLGS `pkg-config --cflags sdl`"
++	S9XFLGS="$S9XFLGS `pkg-config --cflags sdl`"
 +	S9XLIBS="$S9XLIBS `pkg-config --libs sdl`"
  else
  	AC_MSG_ERROR([SDL is required.])
@@ -40,3 +50,6 @@ index 670ea05b279a..62e395400c23 100644
  
  	CXXFLAGS="[$]OLD_CXXFLAGS"
  
+-- 
+2.17.1
+
