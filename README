@@ -1,7 +1,7 @@
 OpenEmbedded/Yocto software layer for video game system emulators
 ============================================================
 
-This layer provides video game system emulators recipes for 
+This layer provides video game system emulators recipes for
 use with OpenEmbedded and/or Yocto.
 
 
@@ -22,10 +22,9 @@ This layer depends on:
 Patches
 =======
 
-Please submit any patches against the meta-game-emulators layer 
-to the maintainer.
+Please submit any patches via Pull Request to the GitHub repository:
 
-Maintainer: Sergio Prado <sergio.prado@e-labworks.com>
+https://github.com/sergioprado/meta-game-emulators
 
 
 Adding the meta-game-emulators layer to your build
