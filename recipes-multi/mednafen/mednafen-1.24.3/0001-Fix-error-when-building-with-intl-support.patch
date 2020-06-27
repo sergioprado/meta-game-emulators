@@ -1,0 +1,31 @@
+From b1879642be06f9602b1374554c14798bc423ae63 Mon Sep 17 00:00:00 2001
+From: Sergio Prado <sergio.prado@e-labworks.com>
+Date: Sat, 27 Jun 2020 14:09:13 +0000
+Subject: [PATCH] Fix error when building with intl support
+
+Build with intl support fails with the following message:
+
+| make[1]: *** No rule to make target
+'libgnuintl.@INTL_LIBTOOL_SUFFIX_PREFIX@a', needed by 'all-no-yes'.
+Stop.
+
+So let disable it for now.
+
+Signed-off-by: Sergio Prado <sergio.prado@e-labworks.com>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1cdf970f522e..d413f4539591 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-SUBDIRS	= po intl src
++SUBDIRS	= po src
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-- 
+2.17.1
+
