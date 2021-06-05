@@ -22,6 +22,8 @@ DEPENDS = "virtual/libsdl libpng"
 
 inherit autotools-brokensep pkgconfig
 
+INSANE_SKIP_${PN} = "ldflags"
+
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 snes9x-sdl ${D}${bindir}
