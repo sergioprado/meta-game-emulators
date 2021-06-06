@@ -9,7 +9,9 @@ SRC_URI = "\
            git://github.com/amadvance/${BPN}.git \
            "
 
-SRCREV = "0a22846ccddfbd7a8220614661b546dfbca2b65a"
+SRCREV = "384e646234d17b01f89a0e3b38cfdea770d1a1d2"
+
+PV = "3.9+git${SRCPV}"
 
 S = "${WORKDIR}/git"
 
@@ -34,4 +36,9 @@ inherit autotools-brokensep pkgconfig
 do_configure_prepend() {
     # Upstream doesn't ship this and autoreconf won't install it as automake isn't used.
     cp -f $(automake --print-libdir)/install-sh ${S}/
+}
+
+# we need to override do_install because the install target fails if DESTDIR is passed
+do_install() {
+    oe_runmake install
 }
